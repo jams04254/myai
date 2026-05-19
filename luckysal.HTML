@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Responsive Animated Login From using HTML CSS Only | Codehal</title>
+        <link rel="stylesheet" href="l.css">
+        <style>
+            h1{
+                background:white;
+                height:30px;
+                font-size:20px;
+                text-transform: uppercase;
+                padding: 10px;
+                margin-top: -8px;
+                width: 100%;
+            }
+            .box{
+                height: 200px;
+                padding: 10px;
+            }
+            .copy .past{
+                width: 50px;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="menu">
+        <h1>❤Luckysal</h1>
+        <li class="item">
+        <a href="#Home" class="#Home">Home</a>
+        <a href="#Healthy food" class="#Healthy food">Healthy food</a>
+        </li>
+        </ul>
+        <div id="content">
+        <textarea rows="10" id="myInput.value"cols="30" placeholder="
+        ❤Luckysal
+        Food=
+            -
+            -
+            -
+            -
+            -
+            -
+            -
+            -
+            -
+            -
+            -
+           Total:
+           Thank you!
+        "></textarea>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+        <button onclick="window.print(myInput.value)">Print</button>
+        <button onclick="navigator.clipboard.writeText(myInput.value)">
+        Copy
+        </button>
+        <button onclick="navigator.clipboard.readText(myInput.value).then(text => myInput.value = text)">
+        Past
+            </button>
+        </div>
+        <form action="" name="clc">
+        <center> <input type="text" class="text" name="display"><br>
+            <input class="btn" type="button" value="1" onclick="clc.display.value +='1'">
+            <input class="btn" type="button" value="2" onclick="clc.display.value +='2'">
+            <input class="btn" type="button" value="3" onclick="clc.display.value +='3'">
+            <input class="btn" type="button" value="+" onclick="clc.display.value +='+'"><br>
+            <input class="btn" type="button" value="4" onclick="clc.display.value +='4'">
+            <input class="btn" type="button" value="5" onclick="clc.display.value +='5'">
+            <input class="btn" type="button" value="6" onclick="clc.display.value +='6'">
+            <input class="btn" type="button" value="-" onclick="clc.display.value +='-'"><br>
+            <input class="btn" type="button" value="7" onclick="clc.display.value +='7'">
+            <input class="btn" type="button" value="8" onclick="clc.display.value +='8'">
+            <input class="btn" type="button" value="9" onclick="clc.display.value +='9'">
+            <input class="btn" type="button" value="x" onclick="clc.display.value +='*'"><br>
+            <input class="btn" type="button" value="=" onclick="clc.display.value =eval(clc.display.value)">
+            <input class="btn" type="button" value="0" onclick="clc.display.value +='0'">
+            <input class="btn" type="button" value="C" onclick="clc.display.value =''">
+            <input class="btn" type="button" value="&#247;" onclick="clc.display.value +='/'">
+        </center>
+        <p id="Healthy food"><h1>Healthy food</h1>
+        <img src="https://www.morelandobgyn.com/hubfs/Imported_Blog_Media/GettyImages-854725402-1.jpg" class="img">
+        <p>1.salmon</p>
+        <p>2.Avacado</p>
+        <h1>All kind of this food are have in our store!</h1>
+        </p>
+        </form>
+    </body>
+</html>
