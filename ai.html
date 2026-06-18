@@ -98,50 +98,6 @@
         </div>
     </div>
     <script>
-  // 1. THIS SAVES THE DATE ON THE USER'S PHONE WITHOUT DOCUMENTS
-  try {
-    const today = new Date().toLocaleDateString();
-    localStorage.setItem('last_visit_date', today);
-    console.log('Saved date to phone: ' + today);
-  } catch (error) {
-    console.log('Storage error: ', error);
-  }
-
-  // 2. THIS MAKES THE SITE WORK OFFLINE WITHOUT WI-FI
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(() => console.log('Offline mode active!'))
-        .catch(err => console.log('Offline mode failed: ', err));
-    });
-  }
-</script>
-
-    <script>
-    const CACHE_NAME = 'chatbot-offline-v1';
-const ASSETS = [
-  './',
-  './file.html' // If your HTML file has a different name, change 'file.html' to that name!
-];
-
-// Save the website files into the phone's cache memory
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(ASSETS);
-    })
-  );
-});
-
-// Load the website from the phone when Wi-Fi is turned off
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
-  );
-});
-
         const emoji = document.getElementById('emoji-face');
         const responseText = document.getElementById('response-text');
         const synth = window.speechSynthesis;
@@ -158,6 +114,11 @@ self.addEventListener('fetch', event => {
             "bitch" : "Is a bad word!",
             "fuck" : "Is a bad word!",
             "google": "You can search for that on <a href='https://google.com' target='_blank'>Google</a>.",
+            "who are you" : "I am an ai!",
+            "cute" : "❤️❤️❤️❤️",
+            "story" : "  The lion and the mouse  A lion once caught a Mouse who had woken him from a nap. The Mouse begged for mercy  promising to one day repay the favor. Amused by the idea that such a tiny creature could help
+  him the lion laughed and let her go.
+    Shortly after the lion was caught in a hunters net. He roared in frustration unable to break the thick ropes. The Mouse heard him and quickly gnawed through the mesh with her sharp teeth  setting the King of the Jungle free.   The lion realized then that even the smallest friend can be a mighty ally. Moral: Kindness is never wasted and size does not define strength.",
             "សួស្ដី" : "សួស្ដីអ្នក!",
             "សួស្តី" : "សួស្ដីអ្នក!",
             "default": "That sounds interesting! Tell me more about it."
@@ -171,7 +132,7 @@ self.addEventListener('fetch', event => {
             
             // Animate face when speaking starts
             utterance.onstart = () => {
-                emoji.innerText = "😮"; // Open mouth emoji
+                emoji.innerText = "😯"; // Open mouth emoji
                 emoji.classList.add('talking');
             };
 
