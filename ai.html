@@ -90,7 +90,6 @@
         <!-- The visual emoji face -->
         <div id="emoji-face">😊</div>
         <div id="response-text">Type 'hello', 'joke', or ask 'how are you'!</div>
-        
         <div class="input-group">
             <input type="text" id="user-input" placeholder="Type here...">
             <button onclick="talkToEmoji()">Send</button>
@@ -104,7 +103,7 @@
 
         // Built-in response system (No internet API needed!)
         const brain = {
-            "hello": "Hello friend! Nice to meet you.",
+            "hello": "Hello ! Nice to meet you.",
             "hi": "Hey there! How is your day going?",
             "how are you": "I am feeling fantastic and fully charged!",
             "joke": "Why don't scientists trust atoms? Because they make up everything!",
@@ -113,7 +112,8 @@
             "crazy" : "Is a bad word!?",
             "bitch" : "Is a bad word!",
             "fuck" : "Is a bad word!",
-            "google": "You can search for that on <a href='https://google.com' target='_blank'>Google</a>.",
+            "google": "<a href='https://google.com' target='_blank'>Google</a>",
+            "story" : "    The lion and the mouse.  A lion once caught a Mouse who had woken him from a nap. The Mouse begged for mercy,  promising to one day repay the favor. Amused by the idea that such a tiny creature could help   him, the lion laughed and let her go. Shortly after, the lion was caught in a hunters net. He roared in frustration, unable to break the  thick ropes. The Mouse heard him and quickly gnawed through the mesh with her sharp teeth,   setting the King of the Jungle free.  The lion realized then that even the smallest friend can be a mighty ally. Moral: Kindness is never wasted, and size does not define strength.",
             "who are you" : "I am an ai!",
             "cute" : "❤️❤️❤️❤️",
             "សួស្ដី" : "សួស្ដីអ្នក!",
@@ -166,7 +166,7 @@
                 }
 
                 // Display response text and speak it aloud
-                responseText.innerText = answer;
+                responseText.innerHTML = answer;
                 speakAloud(answer);
             }, 400);
         }
