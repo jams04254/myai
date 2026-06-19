@@ -93,7 +93,6 @@
         <div class="input-group">
             <input type="text" id="user-input" placeholder="Type here...">
             <button onclick="talkToEmoji()">Send</button>
-
         </div>
     </div>
     <script>
@@ -103,16 +102,23 @@
 
         // Built-in response system (No internet API needed!)
         const brain = {
+            "happy" : "Happy is an emotional state characterized by feelings of joy, satisfaction, contentment, and fulfillment.",
+            "I am cute" : "Yes you so cute.🥰",
+            "I'm cute" : "Yes you so cute.🥰",
+            "you think i am cute" : "Yes you so cute.🥰",
+            "you think i'm cute" : "Yes you so cute.🥰",
             "hello": "Hello ! Nice to meet you.",
             "hi": "Hey there! How is your day going?",
             "how are you": "I am feeling fantastic and fully charged!",
             "joke": "Why don't scientists trust atoms? Because they make up everything!",
-            "name": "My name is Emoji AI. I live right inside your code!",
+            "name": "Daravisal kong",
             "bye": "Goodbye! Come talk to me again soon.",
             "crazy" : "Is a bad word!?",
             "bitch" : "Is a bad word!",
             "fuck" : "Is a bad word!",
-            "google": "<a href='https://google.com' target='_blank'>Google</a>",
+            "google": "<a href='https://google.com' target='_blank'>Google</a> <img src='https://drive.google.com/file/d/10vaxXBYxn5dfTjohw9U2cy-d7BhdkvfN/view?usp=drivesdk'>",
+            "you so cute" : "Thank you!",
+            "you're so cute" : "Thank you!",
             "story" : "    The lion and the mouse.  A lion once caught a Mouse who had woken him from a nap. The Mouse begged for mercy,  promising to one day repay the favor. Amused by the idea that such a tiny creature could help   him, the lion laughed and let her go. Shortly after, the lion was caught in a hunters net. He roared in frustration, unable to break the  thick ropes. The Mouse heard him and quickly gnawed through the mesh with her sharp teeth,   setting the King of the Jungle free.  The lion realized then that even the smallest friend can be a mighty ally. Moral: Kindness is never wasted, and size does not define strength.",
             "who are you" : "I am an ai!",
             "cute" : "❤️❤️❤️❤️",
@@ -177,6 +183,7 @@
                 talkToEmoji();
             }
         });
+
     </script>
 </body>
 </html>
