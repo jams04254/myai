@@ -97,7 +97,7 @@
     </div>
     <datalist id="hidden">
   <option value="open google" value="Open Google" value="Open google">
-  <option value="Open YouTube" value="Open Youtube" value="Open youtube" value="open youtube">
+  <option value="Open YouTube" value="Open YouTube " value="Open Youtube" value="Open youtube" value="open youtube">
   <option value="Open telegram" value="open telegram">
 </datalist>
     <script>
@@ -109,9 +109,7 @@
     // Check if the typed value matches one of your options
     if (val === "open google") {
       window.location.href = "https://google.com";
-    }   if (val === "Open telegram") {
-      window.location.href = "https://web.telegram.org/k/";
-    }  if (val === "open telegram") {
+    }   if (val === "Open telegram" || val === "open telegram") {
       window.location.href = "https://web.telegram.org/k/";
     }  if (val === "Open Google") {
       window.location.href = "https://google.com";
@@ -121,13 +119,18 @@
       window.location.href = "https://youtube.com";
     }   if (val === "Open youtube") {
       window.location.href = "https://youtube.com";
-    }   if (val === "open youtube") {
+    }   if (val === "open youtube" || val === "Open YouTube ") {
       window.location.href = "https://youtube.com";
     }   if (val === "default") {
       window.location.href = "https://google.com";
     } else if (val === "Open google") {
       window.location.href = "https://google.com";
-    }
+    }// Inside your input event listener (around line 130)
+if (val === "open google" || val === "Open Google" || val === "open google " || val === "Open Google ") {
+    window.location.href = "https://google.com";
+    userInput.value = ""; // Clear the box so the AI doesn't "talk"
+}
+
     // Add more "else if" blocks for your other options here
   });
         const emoji = document.getElementById('emoji-face');
