@@ -20,7 +20,7 @@
             padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            width: 380px;
+            width: 480px;
             text-align: center;
         }
 
@@ -85,7 +85,7 @@
     </style>
 </head>
 <body>
-
+    
     <div class="chat-container">
         <!-- The visual emoji face -->
         <div id="emoji-face">😊</div>
@@ -93,6 +93,7 @@
         <div class="input-group">
             <input type="text" id="user-input" placeholder="Type here...">
             <button onclick="talkToEmoji()">Send</button>
+              <button id="toggleButton" onclick="toggleListening()">Start Listening</button>
         </div>
     </div>
     <datalist id="hidden">
@@ -100,6 +101,7 @@
   <option value="Open YouTube" value="Open YouTube " value="Open Youtube" value="Open youtube" value="open youtube">
   <option value="Open telegram" value="open telegram">
 </datalist>
+  </div>
     <script>
       const textInput = document.getElementById('user-input');
 
@@ -164,6 +166,61 @@ if (val === "open google" || val === "Open Google" || val === "open google " || 
             "សួស្តី" : "សួស្ដីអ្នក!",
             "default": "That sounds interesting! Tell me more about it."
         };
+      let recognition = null;
+let isListening = false;
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (!SpeechRecognition) {
+  alert("Please switch to Google Chrome or Microsoft Edge!");
+} else {
+  recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true; // Show words as you say them
+  recognition.lang = "en-US";
+
+  recognition.onresult = function(event) {
+    let interimTranscript = "";
+    
+    // Loop through results structure correctly
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        document.getElementById("textBox").innerHTML += event.results[i][0].transcript + " ";
+      } else {
+        interimTranscript += event.results[i][0].transcript;
+      }
+    }
+    console.log("Heard words: ", interimTranscript);
+  };
+
+  recognition.onerror = function(event) {
+    console.error("Speech error: ", event.error);
+    alert("Microphone Error: " + event.error); // This will tell you EXACTLY what's wrong!
+  };
+
+  recognition.onend = function() {
+    if (isListening) recognition.start(); // Keep alive loop
+  };
+}
+
+function toggleListening() {
+  if (!recognition) return;
+  const button = document.getElementById("toggleButton");
+
+  if (isListening) {
+    isListening = false;
+    recognition.stop();
+    button.innerText = "Start Listening";
+    button.classList.remove("active");
+  } else {
+    isListening = true;
+    // Clear box for new session
+    document.getElementById("user-input").innerText = ""; 
+    recognition.start();
+    button.innerText = "Stop Listening";
+    button.classList.add("active");
+  }
+}
         function speakAloud(text) {
             if (synth.speaking) {
                 synth.cancel();
@@ -214,7 +271,6 @@ if (val === "open google" || val === "Open Google" || val === "open google " || 
                 speakAloud(answer);
             }, 400);
         }
-
         // Allow 'Enter' key to activate speech
         document.getElementById('user-input').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
