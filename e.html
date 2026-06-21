@@ -101,7 +101,7 @@ function toggleListening() {
   } else {
     isListening = true;
     // Clear box for new session
-    document.getElementById("textbox").innerText = ""; 
+    document.getElementById("text").innerText = ""; 
     recognition.start();
     button.innerText = "Stop Listening";
     button.classList.add("active");
