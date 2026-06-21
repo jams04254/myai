@@ -93,19 +93,22 @@
         <div class="input-group">
             <input type="text" id="user-input" placeholder="Type here...">
             <button onclick="talkToEmoji()">Send</button>
-              <button id="toggleButton" onclick="toggleListening()">Start Listening</button>
             <!-- HTML structure -->
 <button id="listen-btn">Listen</button>
 
 <!-- Minimal JavaScript for functionality -->
 <script>
   const button = document.getElementById('listen-btn');
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.onresult = (event) => {
+  // Get the transcript of what was said
+  const transcript = event.results[0][0].transcript;
+  
+  // Put that text into your input field
+  document.getElementById('user-input').value = transcript;
+  
+  console.log('Speech captured:', transcript);
+};
 
-  button.addEventListener('click', () => {
-    recognition.start(); // This command tells the browser to start listening
-    console.log('Listening started...');
-  });
 </script>
 
         </div>
